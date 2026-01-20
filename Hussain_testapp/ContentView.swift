@@ -1,24 +1,40 @@
-//
-//  ContentView.swift
-//  Hussain_testapp
-//
-//  Created by Muhammad hussain Kadiwal on 1/20/26.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    
+    let videos = VideoList.topTwelve
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            List(videos) { video in
+                HStack {
+                    Image(video.imageName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 90)
+                        .cornerRadius(8)
+                    
+                    Spacer().frame(width: 16)
+                    
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(video.title)
+                            .font(.headline)
+                            .lineLimit(2)
+                        
+                        Text(video.uploadDate)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                .padding(.vertical, 8)
+            }
+            .navigationTitle("Hussain's Videos")
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
