@@ -9,6 +9,7 @@ struct Video: Identifiable {
 }
 
 struct VideoList {
+      // working till Images
     
     static let topTwelve = [
         Video(imageName: "37-tips",
